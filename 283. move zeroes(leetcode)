@@ -1,0 +1,49 @@
+class Solution {
+public:
+    void moveZeroes(vector<int>& a) {
+    // brute force
+    int n = a.size();
+    // vector<int>temp1;
+    // vector<int>temp2;
+    // for(int i = 0;i < n; i++){
+    //     if(a[i] == 0){
+    //         temp1.push_back(a[i]);
+    //     }
+    //     else{
+    //         temp2.push_back(a[i]);
+    //     }
+    // }
+    // int j = 0;
+    // for(auto i : temp2){
+    //     a[j] = i;
+    //     j++;
+    // }
+    // for(auto i : temp1){
+    //     a[j] = i;
+    //     j++;
+    // }
+    int j = -1;
+    // first find out first 0 and store that index in j
+    for(int i = 0; i < n; i++){
+        if(a[i] == 0){
+            j = i;
+            break;
+        }
+    }
+
+    
+
+    // and then take i = j + 1; which is element of j in an array
+    if(j != -1){
+        for(int i = j + 1; i < n; i++){
+            if(a[i] != 0){
+                swap(a[i],a[j]);
+                j++;
+            }
+        }
+    }
+
+
+
+    }
+};
