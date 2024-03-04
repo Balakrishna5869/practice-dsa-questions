@@ -1,0 +1,21 @@
+class Solution {
+public:
+    int maxSubArray(vector<int>& nums) {
+        // brute force approach
+        // we can solve these by using two nested loops
+
+        // optimal approach using kadanes alogrithm
+
+        int sum = 0;
+        int large = INT_MIN;
+        int n = nums.size();
+        for(int i = 0; i < n; i++){
+            sum += nums[i];
+            large = max(sum,large);
+            if(sum < 0)
+                sum = 0;
+        }
+        return large;
+
+    }
+};
