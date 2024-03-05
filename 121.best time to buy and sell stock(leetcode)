@@ -1,0 +1,34 @@
+class Solution {
+public:
+    int maxProfit(vector<int>& prices) {
+        //  brute force approch:
+    // int result = 0;
+    //     int temp;
+    //     int n = prices.size();
+    //     for(int i=0;i<n-1;i++){
+    //         for(int j=i+1;j<n;j++){
+    //             if(prices[i] < prices[j]){
+    //                 temp = prices[j] - prices[i];
+    //                 result = max(temp,result);
+    //             }
+    //         }
+    //     }
+    //     return result;
+
+
+    int mini = prices[0];
+    int maxProfit = 0;
+    int n = prices.size();
+    for(int i=1;i<n;i++){
+        if(mini>prices[i]){
+            mini = prices[i];
+        }
+
+        if(prices[i] - mini > maxProfit){
+            maxProfit = prices[i] - mini;
+        }
+    }
+
+    return maxProfit;
+    }
+};
