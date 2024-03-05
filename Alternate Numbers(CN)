@@ -1,0 +1,33 @@
+vector<int> alternateNumbers(vector<int>&a) {
+    // Write your code here.
+    vector<int>postive;
+    vector<int>negative;
+    int n = a.size();
+    for(int i = 0; i < n; i++){
+        if(a[i] > 0)
+            postive.push_back(a[i]);
+        else
+            negative.push_back(a[i]);
+    }
+
+    int mini = min(postive.size(),negative.size());
+
+    for(int i = 0; i < mini; i++){
+        a[i*2] = postive[i];
+        a[i*2+1] = negative[i];
+
+    }
+    if(mini == postive.size()){
+        for(int i = mini; i < negative.size(); i++){
+            a.push_back(negative[i]);
+        }
+    }
+    else{
+        for(int i = mini; i < postive.size(); i++){
+            a.push_back(postive[i]);
+        }
+    }
+    return a;
+
+    
+}
