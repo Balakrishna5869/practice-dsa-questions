@@ -1,0 +1,68 @@
+class Solution {
+public:
+    bool search(vector<int>& nums,int target){
+        for(int i = 0; i < nums.size(); i++){
+            if(nums[i] == target)
+                return true;
+        }
+        return false;
+    }
+    int longestConsecutive(vector<int>& nums) {
+        // approach 1 brute force
+        int n = nums.size();
+        // if(n == 0)
+        //     return 0;
+
+        // int largest = 1;
+        // for(int i = 0; i < n; i++){
+        //     int x = nums[i];
+        //     int count = 1;
+        //     while(search(nums,x+1) == true){
+        //         count++;
+        //         x = x+1;
+        //     }
+        //     largest = max(count,largest);
+        // }
+        // return largest;
+
+        // approach 2 : using sorting the array
+        sort(nums.begin(),nums.end());
+        int largest = 0; 
+        int lastSmaller = INT_MIN;
+        int count = 1;
+        for(int i = 0; i < n; i++){
+            if(nums[i]-1 == lastSmaller){
+                count++;
+                lastSmaller = nums[i];
+            }
+            else if(nums[i] != lastSmaller){
+                count = 1;
+                lastSmaller = nums[i];
+            }
+            largest = max(largest,count);
+        }
+        return largest;
+
+        // approach 3 using unordered set
+
+// note in unordered set search an element  takes O(1) time so thats why we use unordered set
+        // unordered_set<int>st;
+        // for(int i = 0; i < n; i++){
+        //     st.insert(nums[i]);
+        // }
+        // int largest = 0;
+        // for(auto ele : st){
+        //     int x = ele;
+            
+        //     if(st.find(x-1) == st.end()){
+        //         int count = 1;
+        //         while(st.find(x+1) != st.end()){
+        //             count++;
+        //             x = x+1;
+        //         }
+        //         largest = max(largest,count);
+        //     }
+        // }
+        // return largest;
+    }
+};
