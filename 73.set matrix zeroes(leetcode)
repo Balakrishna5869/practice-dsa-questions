@@ -1,0 +1,59 @@
+class Solution {
+public:
+    void setZeroes(vector<vector<int>>& arr) {
+        // bruteforce solution
+        int n = arr.size();
+        int m = arr[0].size();
+
+    //     vector<vector<int>>temp;
+    //     temp = arr;
+    //     for(int i = 0; i < n; i++){
+    //         for(int j = 0; j < m; j++){
+    //             if(arr[i][j] == 0){
+    //                 int i1 = i;
+    //                 while(i1 >= 0){
+    //                     temp[i1][j] = 0;
+    //                     i1--;
+    //                 }
+    //                 int i2 = i;
+    //                 while(i2 < n){
+    //                     temp[i2][j] = 0;
+    //                     i2++;
+    //                 }
+    //                 int j1 = j;
+    //                 while(j1 >= 0){
+    //                     temp[i][j1] = 0;
+    //                     j1--;
+    //                 }
+    //                 int j2 = j;
+    //                 while(j2 < m){
+    //                     temp[i][j2] = 0;
+    //                     j2++;
+    //                 }
+    //             }
+    //         }
+    //     }
+    //     arr = temp;
+
+//  better approach
+    // vector<int>arr1(n);
+    // vector<int>arr2(m);
+	// for(int i = 0; i < n; i++){
+	// 	for(int j = 0; j < m; j++){
+	// 		if(arr[i][j] == 0){
+	// 			arr1[i] = 1;
+	// 			arr2[j] = 1;
+	// 		}
+	// 	}
+	// }
+
+	// for(int i = 0; i < n; i++){
+	// 	for(int j = 0; j < m; j++){
+	// 		if(arr1[i] == 1 || arr2[j] == 1)
+	// 			arr[i][j] = 0;
+	// 	}
+	// }
+
+
+    }
+};
