@@ -1,0 +1,38 @@
+class Solution {
+public:
+    int subarraySum(vector<int>& arr, int k) {
+        // brute force
+        int n = arr.size();
+        // int count = 0;
+        // for(int i = 0; i < n; i++){
+        //     if(arr[i] == k){
+        //         count++;
+        //     }
+        // }
+        
+        // for(int i = 0; i < n-1; i++){
+        //     int sum = arr[i];
+        //     for(int j = i+1; j < n; j++){
+        //         sum = sum + arr[j];
+        //         if(sum == k)
+        //             count++;
+        //     }
+        // }
+        // return count;
+
+        // optimal approach
+        map<int,int>prefixSum;
+        prefixSum[0] = 1;
+        int sum = 0;
+        int count = 0;
+        for(int i = 0; i < n; i++){
+            sum += arr[i];
+            int rem = sum - k;
+            count = count + prefixSum[rem];
+            prefixSum[sum] += 1;
+        }
+
+        return count;
+
+    }
+};
