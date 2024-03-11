@@ -1,0 +1,69 @@
+class Solution {
+public:
+    // better approach
+    vector<int> majorityElement(vector<int>& nums) {
+        int n = nums.size();
+        vector<int>ans;
+        // map<int,int>mp;
+        // for(int i = 0; i < n; i++){
+        //     mp[nums[i]]++;
+        // }
+
+        // for(auto i : mp){
+        //     if(i.second > n/3)
+        //         ans.push_back(i.first);
+        // }
+        // return ans;
+    
+
+    // optimal approach
+    // the intition is simple,we can apply moore's voting algo with some changes
+    // the key point is the ans should be at max 2 elements
+
+    int count1 = 0, count2 = 0;
+    int ele1 = INT_MIN;
+    int ele2 = INT_MIN;
+    for(int i = 0; i < n; i++){
+        if(count1 == 0 && nums[i] != ele2){
+            count1 = 1;
+            ele1 = nums[i]; 
+        }
+        else if(count2 == 0 && nums[i] != ele1){
+            count2 = 1;
+            ele2 = nums[i];
+        }
+        else if(ele1 == nums[i]){
+            count1++;
+        }
+        else if(ele2 == nums[i]){
+            count2++;
+        }
+        else{
+            count1--;
+            count2--;
+        }
+    }
+
+     int count3 = 0;
+    int count4 = 0;
+
+    for(int i = 0; i < n; i++){
+
+        if(ele1 == nums[i]){
+            count3++;
+        }
+        
+        if(ele2 == nums[i]){
+            count4++;
+        }
+    }
+
+    if(count3 > n/3)
+        ans.push_back(ele1);
+
+    if(count4 > n/3)
+        ans.push_back(ele2);
+
+    return ans;
+}
+};
