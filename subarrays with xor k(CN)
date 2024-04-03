@@ -1,0 +1,29 @@
+#include<map>
+int subarraysWithSumK(vector < int > a, int b) {
+    // Write your code here
+    int n = a.size();
+    int count = 0;
+    // brute force
+    // for(int i = 0; i < n; i++){
+    //     int ans = 0;
+    //     for(int j = i; j < n; j++){
+            
+    //         ans = ans ^ a[j];
+    //         if(ans == b){
+    //             count++;
+    //         }
+    //     }
+    // }
+    // return count;
+
+    // optimal
+    map<int,int>mp;
+    mp[0] = 1;
+    int ans = 0;
+    for(int i = 0; i < n; i++){
+        ans = ans^a[i];
+        int temp = ans^b;
+        count = count+mp[temp];
+        mp[ans]++;
+    }
+    return count;
