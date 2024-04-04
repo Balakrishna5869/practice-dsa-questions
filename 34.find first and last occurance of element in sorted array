@@ -1,0 +1,45 @@
+class Solution {
+public:
+    int firstOccu(vector<int> nums,int t){
+        int start=0;
+        int end=nums.size()-1;
+        int res=-1;
+        while(start<=end){
+            int mid=start+(end-start)/2;
+            if(nums[mid]==t){
+               res=mid;
+               end=mid-1;
+            }
+            else if(nums[mid]>t) end=mid-1;
+            else start=mid+1;
+        }
+        return res;
+    }
+   
+   
+    // Finding the second occurrence of target
+    int lastOccu(vector<int> nums,int t){
+         int start=0;int end=nums.size()-1;
+        int res=-1;
+        while(start<=end){
+            int mid=start+(end-start)/2;
+            if(nums[mid]==t){
+               res=mid;
+               start=mid+1;
+            }
+            else if(nums[mid]>t) end=mid-1;
+            else start=mid+1;
+        }
+        return res;
+    }
+    
+    vector<int> searchRange(vector<int>& nums, int target) {
+        vector<int> ans;
+        int num1=firstOccu(nums,target);
+        int num2=lastOccu(nums,target);
+        ans.push_back(num1);
+        ans.push_back(num2);
+        return ans;
+    }
+};
+    
